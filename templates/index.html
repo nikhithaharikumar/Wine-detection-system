@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Wine Predictor</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="" name="keywords">
+  <meta content="" name="description">
+
+ 
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900" rel="stylesheet">
+
+  <!-- Bootstrap CSS File -->
+  <link href="static/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Libraries CSS Files -->
+  <link href="static/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="static/lib/owlcarousel/owl.carousel.min.css" rel="stylesheet">
+  <link href="static/lib/owlcarousel/owl.theme.min.css" rel="stylesheet">
+  <link href="static/lib/owlcarousel/owl.transitions.min.css" rel="stylesheet">
+
+  <!-- Main Stylesheet File -->
+  <link href="static/css/style.css" rel="stylesheet">
+
+  <!--Your custom colour override - predefined colours are: colour-blue.css, colour-green.css, colour-lavander.css, orange is default-->
+  <link href="static/css/colour-green.css" id="colour-scheme" rel="stylesheet">
+
+  <!-- =======================================================
+    Theme Name: Flexor
+    Theme URL: https://bootstrapmade.com/flexor-free-multipurpose-bootstrap-template/
+    Author: BootstrapMade.com
+    Author URL: https://bootstrapmade.com
+  ======================================================= -->
+</head>
+
+<body class="page-index has-hero">
+  <!--Change the background class to alter background image, options are: benches, boots, buildings, city, metro -->
+  <div id="background-wrapper" class="buildings" data-stellar-background-ratio="0.1">
+
+    <!-- ======== @Region: #navigation ======== -->
+    <div id="navigation" class="wrapper">
+      <!--Hidden Header Region-->
+      <div class="header-hidden collapse">
+        <div class="header-hidden-inner container">
+          <div class="row">
+            
+            <div class="col-md-6">
+              <!--Colour & Background Switch for demo - @todo: remove in production-->
+              <h3>
+                  Theme Variations
+                </h3>
+              <div class="switcher">
+                <div class="cols">
+                  Backgrounds:
+                  <br>
+                  <a href="#benches" class="background benches active" title="Benches">Benches</a> <a href="#boots" class="background boots " title="Boots">Boots</a> <a href="#buildings" class="background buildings " title="Buildings">Buildings</a>
+                  
+                </div>
+                
+              </div>
+             
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--Header & navbar-branding region-->
+      <div class="header">
+        <div class="header-inner container">
+          <div class="row">
+            <div class="col-md-8">
+              <!--navbar-branding/logo - hidden image tag & site name so things like Facebook to pick up, actual logo set via CSS for flexibility -->
+              <a  href="index.html" title="Home">
+                <h1 style="text-shadow:2px 2px 5px #800020;">
+                  <strong>WINE PREDICTOR</strong>
+                    
+                  </h1>
+              </a>
+              
+            </div>
+            <!--header rightside-->
+            <div class="col-md-4">
+              <!--user menu-->
+              <ul class="list-inline user-menu pull-right">
+                <li class="user-button"><a class="btn btn-primary btn-hh-trigger" role="button" data-toggle="collapse" data-target=".header-hidden">Open</a></li>
+              </ul>
+              <ul class="list-inline user-menu pull-right">
+                <li class="user-register"><i class="fa fa-edit text-primary "></i> <a href="/register" class="text-uppercase">Register</a></li>
+                <li class="user-login"><i class="fa fa-sign-in text-primary"></i> <a href="/login" class="text-uppercase">Login</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="navbar navbar-default">
+          <!--mobile collapse menu button-->
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+          <!--social media icons-->
+         
+          <!--everything within this div is collapsed on mobile-->
+          <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav" id="main-menu">
+              <li class="icon-link">
+                <a href="/"><i class="fa fa-home"></i></a>
+              </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">USER<b class="caret"></b></a>
+                <!-- Dropdown Menu -->
+                <ul class="dropdown-menu">
+                  <li class="dropdown-header">USER</li>
+                  
+                  <li><a href="/login" tabindex="-1" class="menu-item">Login</a></li>
+                  <li><a href="/register" tabindex="-1" class="menu-item">Sign-Up</a></li>
+                  <li class="dropdown-footer"</li>
+                </ul>
+              </li>
+              
+              
+            </ul>
+          </div>
+          <!--/.navbar-collapse -->
+        </div>
+      </div>
+    </div>
+    <div class="hero" id="highlighted">
+      <div class="inner">
+        <!--Slideshow-->
+        <div id="highlighted-slider" class="container">
+          <div class="item-slider" data-toggle="owlcarousel" data-owlcarousel-settings='{"singleItem":true, "navigation":true, "transitionStyle":"fadeUp"}'>
+            <!--Slideshow content-->
+            <!--Slide 1-->
+            <div class="item">
+              <div class="row">
+                <div class="col-md-6 col-md-push-6 item-caption">
+                  <h2 class="h1 text-weight-light">
+                      Welcome to <strong class="text-primary">Wine Predictor</strong>
+                    </h2>
+                  
+                  <p style="font-size: 24px;">Wine classification is a difficult task since taste is the least understood of the human senses. A good wine quality prediction can be very useful in the certification phase</p>
+                  
+                </div>
+                <div class="col-md-6 col-md-pull-6 hidden-xs">
+                  <img src="static/img/slides/slide1.png" alt="Slide 1" class="center-block img-responsive">
+                </div>
+              </div>
+            </div>
+            <!--Slide 2-->
+            <div class="item">
+              <div class="row">
+                <div class="col-md-6 text-right-md item-caption">
+                  <h2 class="h1 text-weight-light">
+                      <strong class="text-primary">Wine Predictor</strong>
+                    </h2>
+                  
+                  <p style="font-size: 24px;">An automatic predictive system can be integrated into a decision support system, helping the speed and quality of the oenologist performance. </p>
+                  
+                </div>
+                <div class="col-md-6 hidden-xs">
+                  <img src="static/img/slides/slide2.png" alt="Slide 2" class="center-block img-responsive">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======== @Region: #content ======== -->
+  <div id="content">
+    <!-- Mission Statement -->
+    
+    </div>
+    <!-- Services -->
+    
+
+  <!-- ======== @Region: #footer ======== -->
+  <footer " class="block block-bg-grey-dark" data-block-bg-img="img/bg_footer-map.png" data-stellar-background-ratio="0.4">
+    
+    
+          <div class="credits" style="margin-left: 600px;">
+           
+      
+            Designed by <a href="https://1000projects.org/">1000Projects</a>
+          </div>
+    
+
+      <a href="#top" class="scrolltop">Top</a>
+
+    </div>
+  </footer>
+
+  <!-- Required JavaScript Libraries -->
+  <script src="static/lib/jquery/jquery.min.js"></script>
+  <script src="static/lib/bootstrap/js/bootstrap.min.js"></script>
+  <script src="static/lib/owlcarousel/owl.carousel.min.js"></script>
+  <script src="static/lib/stellar/stellar.min.js"></script>
+  <script src="static/lib/waypoints/waypoints.min.js"></script>
+  <script src="static/lib/counterup/counterup.min.js"></script>
+  <script src="static/contactform/contactform.js"></script>
+
+  <!-- Template Specisifc Custom Javascript File -->
+  <script src="static/js/custom.js"></script>
+
+  <!--Custom scripts demo background & colour switcher - OPTIONAL -->
+  <script src="static/js/color-switcher.js"></script>
+
+  <!--Contactform script -->
+  <script src="static/contactform/contactform.js"></script>
+
+</body>
+
+</html>
