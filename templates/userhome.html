@@ -173,10 +173,10 @@
   <div id="content">
     <!-- Mission Statement -->
     <center>
-    <form action="/view" class="form">
+    <form action="/view" method="POST" enctype="multipart/form-data" class="form">
         <h1 style="background-color: greenyellow;margin-top: -0px;border-radius: 40px 40px 0px 0px;font-size: 32px;"><strong>UPLOAD DATASET</strong></h1>
-        <input type="file" placeholder="upload dataset" value="Upload" style="padding-top: 1in;" required><br>
-        <a href="/view"><button class="btn-primary">Upload</button></a>
+        <input type="file" name="file" id="file" placeholder="upload dataset" value="Upload" style="padding-top: 1in;" required><br>
+         <button type="submit" class="btn btn-primary">Upload</button>
 
     </form>
 </center>

@@ -29,9 +29,10 @@ def values():
 def userhome():
     return render_template("userhome.html")
 
-@app.route("/view")
+@app.route("/view",methods=['GET','POST'])
 def view():
-    data=pandas.read_csv("C:\\Users\\home\\Documents\\Python\\wine prediction\\winequality-red.csv")
+    # reads the contents of the uploaded file by the user
+    data=pandas.read_csv(request.files.get('file'))
     peek=data.head(30)
     return render_template("view.html",tables=[peek.to_html(classes='data')])
 
@@ -39,8 +40,8 @@ def view():
 @app.route("/userreg", methods = ['GET','POST'])
 def userreg():
    if request.method == 'POST':      
-      status = user_reg(request.form['username'],request.form['email'],request.form['password'],request.form['address'],request.form['mobile'])
-      if status == 1:
+      results = user_reg(request.form['username'],request.form['email'],request.form['password'],request.form['address'],request.form['mobile'])
+      if results != []:
        return render_template("login.html",m1="sucess")
       else:
        return render_template("register.html",m1="failed")
@@ -49,9 +50,9 @@ def userreg():
 @app.route("/userlogact", methods=['GET', 'POST'])       
 def userlogact():
         if request.method == 'POST':
-           status = user_loginact(request.form['username'], request.form['password'])
-           print(status)
-        if status == 1:
+           results = user_loginact(request.form['username'], request.form['password'])
+           print(results)
+        if results != []:
             session['username'] = request.form['username']
             return render_template("userhome.html", m1="sucess")
         else:
