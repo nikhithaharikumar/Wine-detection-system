@@ -1,9 +1,16 @@
 import numpy as np
 import os
+import io
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import pandas as pandas
-from flask import Flask,render_template, request, redirect, url_for, Blueprint, send_file, jsonify,session
+from flask import Flask,render_template, request, redirect, url_for, Blueprint, send_file, jsonify,session,Response
 from database import db_connect,  user_reg,user_loginact
+from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
+from matplotlib.figure import Figure
+from io import BytesIO
+import base64
 import re
 
 app = Flask(__name__)
@@ -131,45 +138,59 @@ def rate():
     else:
         alcohol = float(request.form['alcohol'])
 
-    red_wine = [[fixed_acidity, volatile_acidity, citric_acid, residual_sugar,
-                 chlorides, free_sulfur_dioxide, total_sulfur_dioxide,
-                 density, pH, sulphates, alcohol]]
+    red_wine = [[fixed_acidity, volatile_acidity, citric_acid, residual_sugar, chlorides, free_sulfur_dioxide,
+                 total_sulfur_dioxide, density, pH, sulphates, alcohol]]
 
-    
-### Dataset as df
+    wine = [fixed_acidity, volatile_acidity, citric_acid, residual_sugar, chlorides, free_sulfur_dioxide,
+            total_sulfur_dioxide, density, pH, sulphates, alcohol]
+    index = ['fixed_acidity', 'volatile_acidity', 'citric_acid', 'residual_sugar', 'chlorides', 'free_sulfur_dioxide',
+             'total_sulfur_dioxide', 'density', 'pH', 'sulphates', 'alcohol']
+
+    df = pandas.DataFrame({'red_wine': wine}, index=index)
+    df.plot.barh(y='red_wine', color='r')
+    plt.gcf().subplots_adjust(bottom=0.15)
+    plt.tight_layout()
+
+    img = BytesIO()
+
+    plt.savefig(img, format='png')
+    plt.close()
+    img.seek(0)
+    plot_url = base64.b64encode(img.getvalue()).decode('utf8')
+
+    ### Dataset as df
     dataset = pandas.read_csv('winequality-red.csv')
 
-
-### Shuffle data
+    ### Shuffle data
     from sklearn.utils import shuffle
     dataset = shuffle(dataset)
 
-
     ### Separate label y from features X
-    X = dataset.iloc[:,:11].values  
-    y = dataset.iloc[:,11].values
-
+    X = dataset.iloc[:, :11].values
+    y = dataset.iloc[:, 11].values
 
     ### Standardize features
     from sklearn.preprocessing import StandardScaler
     sc_X = StandardScaler()
     X = sc_X.fit_transform(X)
 
-
     ### Train/Validation/Test split
     from sklearn.model_selection import train_test_split
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2)
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
 
     ################################### MODELS ################################################################################################
 
     ### Logisitic Regression
     from sklearn.linear_model import LogisticRegression
     classifier_log = LogisticRegression()
-    classifier_log.fit(X_train,y_train)
-    pred=classifier_log.predict(red_wine)
+    classifier_log.fit(X_train, y_train)
+    pred = classifier_log.predict(red_wine)
     print("xxxxxxxxxxxxxxxxxxxxxxxxxxx predicted value xxxxxxxxxxxxxxxxxxx")
     print(pred)
-    return render_template("result.html", pred=pred)
+    quality = dataset["quality"].values
+    category = []
+
+    return render_template("result.html", pred=pred, plot_url=plot_url)
 
 if __name__ == "__main__":
     app.run(debug=True, host='127.0.0.1', port=5000)
