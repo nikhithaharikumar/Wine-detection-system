@@ -74,6 +74,7 @@
           </div>
         </div>
       </div>
+
       <!--Header & navbar-branding region-->
       <div class="header">
         <div class="header-inner container">
@@ -101,6 +102,20 @@
           </div>
         </div>
       </div>
+      {% if message %}
+      <div class="container">
+        <div class="alert alert-success alert-dismissible show" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h4 class="alert-heading">Successfully logged in!</h4>
+          <p>You are now successfully logged in.
+            Predict your favorite wine's quality :).</p>
+          <hr>
+        </div>
+        </div>
+      {% endif %}
+
       <div class="container">
         <div class="navbar navbar-default">
           <!--mobile collapse menu button-->

@@ -54,9 +54,9 @@ def userlogact():
            print(results)
         if results != []:
             session['username'] = request.form['username']
-            return render_template("userhome.html", m1="sucess")
+            return render_template("userhome.html", message="success",username =request.form['username'])
         else:
-            return render_template("login.html", m1="Login Failed")
+            return render_template("login.html", message="Invalid Credentials !! Please Try Again")
 
 @app.route('/rate', methods=['POST'])
 def rate():
