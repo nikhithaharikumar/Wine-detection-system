@@ -74,6 +74,30 @@
           </a>
         </div>
       </div>
+      {% if m1 %}
+        <div class="alert alert-info alert-dismissible show" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h4 class="alert-heading">Registered successfully</h4>
+          <p>Your registration was successful.Login with your registered username and password.
+            Login to predict your favorite wine's quality :).</p>
+          <hr>
+          <p class="mb-0">Register to our site if you are a new user!!</p>
+        </div>
+      {% endif %}
+      {% if message %}
+        <div class="alert alert-danger alert-dismissible show" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h4 class="alert-heading">Invalid Credentials!</h4>
+          <p>An error occurred while trying to login. Login with your registered username and password.
+            Please login again to know predict your favorite wine's quality :).</p>
+          <hr>
+          <p class="mb-0">Register to our site if you are a new user!!</p>
+        </div>
+      {% endif %}
       <div class="row">
         <div class="col-sm-6 col-sm-offset-3">
           <div class="panel panel-default">
@@ -88,7 +112,7 @@
                   <div class="form-group">
                     <div class="input-group input-group-lg">
                       <span class="input-group-addon"><i class="fa fa-fw fa-envelope"></i></span>
-                      <input type="text" class="form-control" name="username" placeholder="Usrname" required>
+                      <input type="text" class="form-control" name="username" placeholder="Username" required>
                     </div>
                   </div>
                   <div class="form-group">

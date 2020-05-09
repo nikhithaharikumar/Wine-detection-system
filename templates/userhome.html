@@ -74,13 +74,14 @@
           </div>
         </div>
       </div>
+
       <!--Header & navbar-branding region-->
       <div class="header">
         <div class="header-inner container">
           <div class="row">
             <div class="col-md-8">
               <!--navbar-branding/logo - hidden image tag & site name so things like Facebook to pick up, actual logo set via CSS for flexibility -->
-              <a  href="index.html" title="Home">
+              <a  href="/userhome" title="Home">
                 <h1 style="text-shadow:2px 2px 5px #800020;">
                   <strong>WINE PREDICTOR</strong>
                     
@@ -101,6 +102,20 @@
           </div>
         </div>
       </div>
+      {% if message %}
+      <div class="container">
+        <div class="alert alert-success alert-dismissible show" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h4 class="alert-heading">Successfully logged in!</h4>
+          <p>You are now successfully logged in.
+            Predict your favorite wine's quality :).</p>
+          <hr>
+        </div>
+        </div>
+      {% endif %}
+
       <div class="container">
         <div class="navbar navbar-default">
           <!--mobile collapse menu button-->
@@ -173,10 +188,10 @@
   <div id="content">
     <!-- Mission Statement -->
     <center>
-    <form action="/view" class="form">
+    <form action="/view" method="POST" enctype="multipart/form-data" class="form">
         <h1 style="background-color: greenyellow;margin-top: -0px;border-radius: 40px 40px 0px 0px;font-size: 32px;"><strong>UPLOAD DATASET</strong></h1>
-        <input type="file" placeholder="upload dataset" value="Upload" style="padding-top: 1in;" required><br>
-        <a href="/view"><button class="btn-primary">Upload</button></a>
+        <input type="file" name="file" id="file" placeholder="upload dataset" value="Upload" style="padding-top: 1in;" required><br>
+         <button type="submit" class="btn btn-primary">Upload</button>
 
     </form>
 </center>
@@ -191,7 +206,7 @@
     <div class="credits" style="margin-left: 600px;">
      
 
-      Designed by <a href="https://1000projects.org/">1000Projects</a>
+       Designed by Tabu & Team
     </div>
 
 
