@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import pandas as pandas
 from flask import Flask,render_template, request, redirect, url_for, Blueprint, send_file, jsonify,session
 from database import db_connect,  user_reg,user_loginact
+import re
 
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
@@ -39,12 +40,26 @@ def view():
 
 @app.route("/userreg", methods = ['GET','POST'])
 def userreg():
-   if request.method == 'POST':      
-      results = user_reg(request.form['username'],request.form['email'],request.form['password'],request.form['address'],request.form['mobile'])
-      if results != []:
-       return render_template("login.html",m1="sucess")
-      else:
-       return render_template("register.html",m1="failed")
+   if request.method == 'POST':
+        #regular expression to check email validity
+        regex_email = '^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$'
+        messages = []
+        if not re.search(regex_email,request.form['email']):
+           messages.append("Invalid Email Format.")
+        if len(request.form['password'])!= 8:
+            messages.append("Password should be minimum 8 characters.")
+        if request.form['password'] != request.form['confirm_password']:
+            messages.append("The passwords don't match.")
+        if len(str(request.form['mobile']))!=10:
+            messages.append("Mobile number should be 10 digits long.")
+        if messages:
+            return render_template("register.html",messages=messages)
+        results = user_reg(request.form['username'],request.form['email'],request.form['password'],request.form['address'],request.form['mobile'])
+        if results != []:
+            return render_template("login.html",m1="success")
+        else:
+            return render_template("register.html",messages="failed")
+
 
 
 @app.route("/userlogact", methods=['GET', 'POST'])       

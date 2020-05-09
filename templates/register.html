@@ -53,6 +53,21 @@
           </a>
         </div>
       </div>
+      {% if messages %}
+        <div class="alert alert-danger alert-dismissible show" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h4 class="alert-heading">Error occurred during registration!</h4>
+          <p>{% for message in messages %}
+            {{ message }}</br>
+            {% endfor %}
+            Please register again with proper details.</p>
+          <hr>
+          <p class="mb-0">Already registered? Login to our site to predict your favorite wine's quality !!</p>
+        </div>
+      {% endif %}
+
       <div class="row">
         <div class="col-sm-6 col-sm-offset-3">
           <div class="panel panel-default">
@@ -81,6 +96,14 @@
                       <span class="input-group-addon"><i class="fa fa-fw fa-lock"></i></span>
                       <input type="password" name="password" class="form-control" placeholder="Password" required>
                     </div>
+                    <span class="help-block">Password should be minimum 8 characters</span>
+                  </div>
+                  <div class="form-group">
+                    <div class="input-group input-group-lg">
+                      <span class="input-group-addon"><i class="fa fa-fw fa-lock"></i></span>
+                      <input type="password" name="confirm_password" class="form-control" placeholder="Confirm Password" required>
+                    </div>
+                    <span class="help-block">Password should be minimum 8 characters</span>
                   </div>
                   <div class="form-group">
                     <div class="input-group input-group-lg">
@@ -93,7 +116,8 @@
                         <span class="input-group-addon"><i class="fa fa-fw fa-mobile"></i></span>
                         <input type="text" name="mobile" class="form-control" placeholder="Mobile" required>
                       </div>
-                  <input class="btn btn-lg btn-primary btn-block" type="submit" value="Sign Me Up">
+                    <input class="btn btn-lg btn-primary btn-block" type="submit" value="Sign Me Up">
+                    </div>
                 </fieldset>
               </form>
               <p class="m-b-0 m-t">Already signed up? <a href="/login">Login here</a>.</p>

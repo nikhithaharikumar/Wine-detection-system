@@ -74,6 +74,18 @@
           </a>
         </div>
       </div>
+      {% if m1 %}
+        <div class="alert alert-info alert-dismissible show" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h4 class="alert-heading">Registered successfully</h4>
+          <p>Your registration was successful.Login with your registered username and password.
+            Login to predict your favorite wine's quality :).</p>
+          <hr>
+          <p class="mb-0">Register to our site if you are a new user!!</p>
+        </div>
+      {% endif %}
       {% if message %}
         <div class="alert alert-danger alert-dismissible show" role="alert">
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
